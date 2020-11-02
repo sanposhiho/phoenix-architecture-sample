@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  tsundoku-buster-mysql:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - tsundoku-buster-mysql-data:/var/lib/mysql
+      - ../mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - tsundoku-buster-network
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+volumes:
+  tsundoku-buster-mysql-data:
+networks:
+  tsundoku-buster-network:
+    driver: bridge
