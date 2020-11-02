@@ -17,6 +17,9 @@ defmodule TsundokuBusterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/users", UserController, only: [:show, :update, :delete]
+    get "/authenticate", UserController, :authenticate
+    get "/callback", UserController, :callback
   end
 
   # Other scopes may use custom stacks.

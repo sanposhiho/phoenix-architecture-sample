@@ -3,7 +3,7 @@ defmodule TsundokuBuster.MixProject do
 
   def project do
     [
-      app: :tsundoku_buster,
+      app: :TsundokuBuster,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -44,7 +44,12 @@ defmodule TsundokuBuster.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:dialyxir, "~> 1.0", only: [:dev]},
+      {:cowboy, "< 2.8.0", override: true},
+      {:oauther, "~> 1.1"},
+      {:extwitter, git: "https://github.com/sanposhiho/extwitter"},
+      {:timex, "~> 3.5"}
     ]
   end
 
