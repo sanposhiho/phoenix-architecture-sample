@@ -20,3 +20,7 @@ config :tsundoku_buster, TsundokuBusterWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :tsundoku_buster,
+  twitter_client: ExTwitterMock,
+  user_repo: TsundokuBuster.Repository.UserMock

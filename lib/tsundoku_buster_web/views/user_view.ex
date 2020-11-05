@@ -7,14 +7,16 @@ defmodule TsundokuBusterWeb.UserView do
   end
 
   def render("authenticate.json", %{authorize_url: authorize_url}) do
-      %{data: %{authorize_url: authorize_url}}
+    %{data: %{authorize_url: authorize_url}}
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
+    %{
+      id: user.id,
       name: user.name,
       twitter_id: user.twitter_id,
       created_at: user.created_at,
-      updated_at: user.updated_at}
+      updated_at: user.updated_at
+    }
   end
 end

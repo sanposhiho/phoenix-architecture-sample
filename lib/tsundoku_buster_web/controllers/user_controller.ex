@@ -14,7 +14,8 @@ defmodule TsundokuBusterWeb.UserController do
   end
 
   def callback(conn, %{"oauth_verifier" => oauth_verifier, "oauth_token" => oauth_token}) do
-    with {:ok, %User{} = user} <- UserUsecase.create_user_from_twitter(oauth_verifier, oauth_token) do
+    with {:ok, %User{} = user} <-
+           UserUsecase.create_user_from_twitter(oauth_verifier, oauth_token) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))

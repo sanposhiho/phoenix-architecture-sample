@@ -11,6 +11,5 @@ defmodule TsundokuBuster.Repo.Migrations.CreateUsers do
       add :created_at, :naive_datetime
       add :updated_at, :naive_datetime
     end
-
   end
 end

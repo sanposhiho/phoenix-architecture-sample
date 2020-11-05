@@ -28,5 +28,5 @@ jobs:
           eval "$(cat env.local <(echo) <(declare -x))"
           until mysql -u${DB_USER} -p${DB_PASSWORD} -h${DB_HOST} -P${DB_PORT} -e "SELECT 1"; do sleep 1; done
       - run: mix deps.get
-      - run: mix test
+      - run: make test
       - run: mix format --check-formatted

@@ -49,7 +49,8 @@ defmodule TsundokuBuster.MixProject do
       {:cowboy, "< 2.8.0", override: true},
       {:oauther, "~> 1.1"},
       {:extwitter, git: "https://github.com/sanposhiho/extwitter"},
-      {:timex, "~> 3.5"}
+      {:timex, "~> 3.5"},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
