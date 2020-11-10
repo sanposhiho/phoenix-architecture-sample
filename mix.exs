@@ -10,6 +10,7 @@ defmodule TsundokuBuster.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      dialyzer: dialyzer(),
       deps: deps()
     ]
   end
@@ -51,6 +52,13 @@ defmodule TsundokuBuster.MixProject do
       {:extwitter, git: "https://github.com/sanposhiho/extwitter"},
       {:timex, "~> 3.5"},
       {:mox, "~> 1.0", only: :test}
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 
