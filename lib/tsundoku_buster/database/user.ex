@@ -10,13 +10,13 @@ defmodule TsundokuBuster.Database.User do
   alias TsundokuBuster.Schema.User
 
   @type attrs :: %{
-                    optional(:name) => String.t(),
-                    optional(:twitter_id) => String.t(),
-                    optional(:oauth_token) => String.t(),
-                    optional(:oauth_token_secret) => String.t(),
-                    optional(:created_at) => DateTime.t(),
-                    optional(:updated_at) => DateTime.t()
-                  }
+          optional(:name) => String.t(),
+          optional(:twitter_id) => String.t(),
+          optional(:oauth_token) => String.t(),
+          optional(:oauth_token_secret) => String.t(),
+          optional(:created_at) => DateTime.t(),
+          optional(:updated_at) => DateTime.t()
+        }
 
   @doc """
   Returns the list of users.
@@ -49,7 +49,7 @@ defmodule TsundokuBuster.Database.User do
   @spec get_user(id :: String.t()) :: {:ok, %User{}} | {:error, atom()}
   def get_user(id) do
     case Repo.get(User, id) do
-      nil  -> {:error, :not_found}
+      nil -> {:error, :not_found}
       user -> {:ok, user}
     end
   end
@@ -67,7 +67,8 @@ defmodule TsundokuBuster.Database.User do
 
   """
   @impl TsundokuBuster.Repository.UserBehaviour
-  @spec create_user(attrs :: TsundokuBuster.Database.User.attrs) :: {:ok, %User{}} | {:error, %Ecto.Changeset{}}
+  @spec create_user(attrs :: TsundokuBuster.Database.User.attrs()) ::
+          {:ok, %User{}} | {:error, %Ecto.Changeset{}}
   def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
@@ -87,7 +88,8 @@ defmodule TsundokuBuster.Database.User do
 
   """
   @impl TsundokuBuster.Repository.UserBehaviour
-  @spec update_user(user :: %User{}, attrs :: TsundokuBuster.Database.User.attrs) :: {:ok, %User{}} | {:error, %Ecto.Changeset{}}
+  @spec update_user(user :: %User{}, attrs :: TsundokuBuster.Database.User.attrs()) ::
+          {:ok, %User{}} | {:error, %Ecto.Changeset{}}
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
@@ -122,7 +124,8 @@ defmodule TsundokuBuster.Database.User do
 
   """
   @impl TsundokuBuster.Repository.UserBehaviour
-  @spec change_user(user :: %User{}, attrs :: TsundokuBuster.Database.User.attrs) :: %Ecto.Changeset{}
+  @spec change_user(user :: %User{}, attrs :: TsundokuBuster.Database.User.attrs()) ::
+          %Ecto.Changeset{}
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end

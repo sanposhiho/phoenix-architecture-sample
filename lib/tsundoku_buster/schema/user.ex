@@ -16,7 +16,21 @@ defmodule TsundokuBuster.Schema.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :twitter_id, :oauth_token, :oauth_token_secret, :created_at, :updated_at])
-    |> validate_required([:name, :twitter_id, :oauth_token, :oauth_token_secret, :created_at, :updated_at])
+    |> cast(attrs, [
+      :name,
+      :twitter_id,
+      :oauth_token,
+      :oauth_token_secret,
+      :created_at,
+      :updated_at
+    ])
+    |> validate_required([
+      :name,
+      :twitter_id,
+      :oauth_token,
+      :oauth_token_secret,
+      :created_at,
+      :updated_at
+    ])
   end
 end
