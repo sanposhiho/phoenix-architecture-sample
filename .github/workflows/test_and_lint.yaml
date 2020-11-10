@@ -28,5 +28,18 @@ jobs:
           eval "$(cat env.local <(echo) <(declare -x))"
           until mysql -u${DB_USER} -p${DB_PASSWORD} -h${DB_HOST} -P${DB_PORT} -e "SELECT 1"; do sleep 1; done
       - run: mix deps.get
-      - run: make test
+      - run: mix test
       - run: mix format --check-formatted
+      - name: Retrieve PLT Cache
+        uses: actions/cache@v1
+        id: plt-cache
+        with:
+          path: priv/plts
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-plts-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+      - name: Create PLTs
+        if: steps.plt-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p priv/plts
+          mix dialyzer --plt
+      - name: Run dialyzer
+        run: mix dialyzer --no-check --halt-exit-status
