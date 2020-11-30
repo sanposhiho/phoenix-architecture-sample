@@ -1,20 +1,34 @@
-# TsundokuBuster
+# Phoenix my best architecture
 
-To start your Phoenix server:
+Phoenixにおいて、RDBの使用を前提としたアーキテクチャのサンプルです。
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+```
+lib
+├──tsundoku_buster
+    ├── behaviour
+         └── repository
+    ├── database
+    ├── schema
+    └── usecase
+├── tsundoku_buster_web
+    ├── controllers
+    ├── views
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+(アーキテクチャに関係する部分のみを抜粋)
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### behaviour
 
-## Learn more
+副作用のあるモジュール(Databaseの操作を行うモジュールなど)のbehaviourを定義します。
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### database
+
+RDBの操作を行うモジュールを定義します
+
+### schema
+
+schemaを定義するモジュールを定義します
+
+### usecase
+
+アプリケーションのロジックを実現します。
