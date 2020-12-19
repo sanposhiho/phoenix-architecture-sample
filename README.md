@@ -1,4 +1,4 @@
-# Phoenix my best architecture
+# Phoenix architecture sample
 
 Phoenixにおいて、RDBの使用を前提としたアーキテクチャのサンプルです。
 
