@@ -1,6 +1,6 @@
 # Phoenix architecture sample
 
-Phoenixにおいて、RDBの使用を前提としたアーキテクチャのサンプルです。
+Phoenixにおいて、 **RDBの使用を前提とした** アーキテクチャのサンプルです。
 
 ```
 lib
